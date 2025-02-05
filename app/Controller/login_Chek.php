@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $result = $user->login();
                 if ($result['success']) {
                     if($_SESSION['role']=='student'){
-                        header('Location:index.php');
+                        header('Location:indexp.php');
                     }else if($_SESSION['role']=='teacher'){
                         header('Location: Course_Management_teacher.php');
 

@@ -10,36 +10,7 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white text-black">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-black shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="#" class="text-2xl font-bold text-white">Youdemy</a>
-                    <div class="hidden md:flex space-x-8 ml-10">
-                        <a href="#" class="text-white hover:text-gray-300 px-3 py-2">Accueil</a>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <?php if(!isset($_SESSION['user_id'])){
-                    ?>
-                    <a href="login.php"><button class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
-                        Connexion
-                    </button></a>
-                    <?php }else{?>
-                    
-                    <a href="loug_out.php"><button class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
-                    Déconnexion
-                    </button></a>
-                    <?php }if(isset($_SESSION['role']) && $_SESSION['role']=='student'){?>
-                        <a href="My_Courses_Page_student.php"><button class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
-                    My courses
-                    </button></a>
-                    <?php }?>
-                </div>
-            </div>
-        </div>
-    </nav>
+<?php require_once('../Views/nav/Navbar_student.php') ?>
     
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-white to-gray-200 pt-24 pb-16">
@@ -227,10 +198,10 @@ session_start();
         <div class="flex justify-center space-x-2">
             <?php if ($currentPage > 1): ?>
                 <a href="?page=<?= $currentPage - 1 ?><?= $categoryId ? '&category=' . $categoryId : '' ?><?= $searchQuery ? '&search=' . urlencode($searchQuery) : '' ?>" 
-                   class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    class="px-4 py-2 border rounded-lg hover:bg-gray-100">
                     Précédent
                 </a>
-            <?php endif; ?>
+            <?php endif;?>
             
             <?php
             $startPage = max(1, $currentPage - 2);
@@ -242,14 +213,14 @@ session_start();
             for ($i = $startPage; $i <= $endPage; $i++):
             ?>
                 <a href="?page=<?= $i ?><?= $categoryId ? '&category=' . $categoryId : '' ?><?= $searchQuery ? '&search=' . urlencode($searchQuery) : '' ?>"
-                   class="px-4 py-2 <?= $i === $currentPage ? 'bg-black text-white' : 'border hover:bg-gray-100' ?> rounded-lg">
+                    class="px-4 py-2 <?= $i === $currentPage ? 'bg-black text-white' : 'border hover:bg-gray-100' ?> rounded-lg">
                     <?= $i ?>
                 </a>
             <?php endfor; ?>
             
             <?php if ($currentPage < $totalPages): ?>
                 <a href="?page=<?= $currentPage + 1 ?><?= $categoryId ? '&category=' . $categoryId : '' ?><?= $searchQuery ? '&search=' . urlencode($searchQuery) : '' ?>" 
-                   class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    class="px-4 py-2 border rounded-lg hover:bg-gray-100">
                     Suivant
                 </a>
             <?php endif; ?>

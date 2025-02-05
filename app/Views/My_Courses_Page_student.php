@@ -12,28 +12,7 @@ require_once('../Controller/controler_my_cours_student.php');
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white text-black">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-black shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="index.php" class="text-2xl font-bold text-white">Youdemy</a>
-                    <div class="hidden md:flex space-x-8 ml-10">
-                        <a href="index.php" class="text-white hover:text-gray-300 px-3 py-2">Accueil</a>
-
-                        <a href="#" class="text-white hover:text-gray-300 px-3 py-2">Mes Cours</a>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <form action="logout.php" method="POST">
-                        <button type="submit" class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
-                            Déconnexion
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </nav>
+   <?php require_once('../Views/nav/Navbar_student.php')?>
 
     <!-- Header -->
     <div class="bg-gradient-to-r from-white to-gray-200 pt-24">
