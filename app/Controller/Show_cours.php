@@ -1,11 +1,12 @@
 <?php
-use Connection\database\Database;
+use Config\Database;
 use Categorymanager\CategoryManager;
 use Coursemanager\CourseManager;
-require_once('../Model/Database.php');
-require_once('../Model/CategoryManager.php');
-require_once('../Model/CourseManager.php');
+// require_once('../config/Database.php');
+// require_once('../Model/CategoryManager.php');
+// require_once('../Model/CourseManager.php');
 
+require_once('/laragon/www/youdemy_mvc/vendor/autoload.php');
     $database = new Database();
     $db = $database->getConnection();
 

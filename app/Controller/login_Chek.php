@@ -1,9 +1,9 @@
 <?php 
-use Connection\database\Database;
+use Config\Database;
 use Users\User;
-require_once "../Model/Database.php";
-require_once "../Model/User.php";
-
+// require_once('../config/Database.php');
+// require_once "../Model/User.php";
+require_once('/laragon/www/youdemy_mvc/vendor/autoload.php');
 session_start();
 
 $database = new Database();

@@ -1,0 +1,22 @@
+{
+    "name": "ycode/youdemy_mvc",
+    "autoload": {
+        "psr-4": {
+            "Config\\": "app/config/",
+            "Categorymanager\\": "app/Model/",
+            "Coursemanager\\": "app/Model/",
+            "EnrollmentManager\\": "app/Model",
+            "Statistic\\": "app/Model",
+            "Tagmanager\\": "app/Model",
+            "Users\\": "app/Model",
+            "coursteacher\\": "app/Model"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hamza",
+            "email": "hamzacoude@gmail.com"
+        }
+    ],
+    "require": {}
+}

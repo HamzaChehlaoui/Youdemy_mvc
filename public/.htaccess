@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+
+# Route all requests to index.php
+RewriteRule ^$ index.php [L]
+RewriteRule ^index$ index.php [L]
+RewriteRule ^courses$ index.php [L]
+RewriteRule ^admin$ index.php [L]
+
+# Optionally, remove the .php extension from URLs
+RewriteRule ^(.*)$ /$1.php [L]

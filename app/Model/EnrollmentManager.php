@@ -1,9 +1,9 @@
 <?php
 namespace EnrollmentManager;
-use Connection\database\Database;
+use Config\Database;
 use PDOException;
 use PDO;
-require_once('../Model/Database.php');
+// require_once('../Model/Database.php');
 require_once('../Controller/Detail_cours.php');
 class EnrollmentManager
 {

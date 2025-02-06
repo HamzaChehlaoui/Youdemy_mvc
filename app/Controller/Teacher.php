@@ -1,9 +1,8 @@
 <?php
-use Connection\database\Database;
-use users\Admin;
-require_once "../Model/Database.php";
-require_once "../Model/User.php";
+use Config\Database;
+use Users\Admin;
 
+require_once('/laragon/www/youdemy_mvc/vendor/autoload.php');
 $database = new Database();
 $db = $database->getConnection();
 $teacher = new Admin($db);

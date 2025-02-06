@@ -1,7 +1,6 @@
 <?php 
 use EnrollmentManager\EnrollmentManager;
-require_once('../Model/EnrollmentManager.php');
-
+require_once('/laragon/www/youdemy_mvc/vendor/autoload.php');
 $enrollmentManager = new EnrollmentManager();
 $enrollmentManager->checkUserLogin();
 $enrollmentManager->checkCourseId();

@@ -1,13 +1,10 @@
 <?php
-use Connection\database\Database;
+use Config\Database;
 use Coursemanager\CourseManager;
 use Tagmanager\TagManager;
 use Categorymanager\CategoryManager;
 
-require_once('../Model/CourseManager.php');
-require_once('../Model/Database.php');
-require_once('../Model/TagManager.php');
-require_once('../Model/CategoryManager.php');
+require_once('/laragon/www/youdemy_mvc/vendor/autoload.php');
 
 session_start();
 

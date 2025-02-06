@@ -42,11 +42,11 @@ class CourseManager {
                     u.username as teacher_name,
                     cat.name as category_name,
                     (SELECT COUNT(*) FROM enrollments WHERE course_id = c.id_courses) as student_count
-                 FROM courses c
-                 JOIN users u ON c.teacher_id = u.id_user
-                 JOIN categories cat ON c.category_id = cat.id_categories
-                 LEFT JOIN course_tags ct ON c.id_courses = ct.course_id
-                 WHERE 1=1";
+                FROM courses c
+                JOIN users u ON c.teacher_id = u.id_user
+                JOIN categories cat ON c.category_id = cat.id_categories
+                LEFT JOIN course_tags ct ON c.id_courses = ct.course_id
+                WHERE 1=1";
         
         $params = [];
         

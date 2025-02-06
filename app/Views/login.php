@@ -18,7 +18,7 @@ include '../Controller/login_chek.php';
                 <div class="flex items-center">
                     <a href="#" class="text-2xl font-bold text-white">Youdemy</a>
                     <div class="hidden md:flex space-x-8 ml-10">
-                        <a href="index.php" class="text-white hover:text-gray-300 px-3 py-2">Accueil</a>
+                        <a href="indexp.php" class="text-white hover:text-gray-300 px-3 py-2">Accueil</a>
                     </div>
                 </div>
             </div>

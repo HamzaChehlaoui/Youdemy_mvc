@@ -1,9 +1,10 @@
 <?php
 
-use Connection\database\Database;
+use Config\Database;
 use Coursemanager\CourseManager;
-require_once('../Model/Database.php');
-require_once('../Model/CourseManager.php');
+// require_once('../config/Database.php');
+// require_once('../Model/CourseManager.php');
+require_once('/laragon/www/youdemy_mvc/vendor/autoload.php');
 $database =new Database();
 $db =$database->getConnection();
 $controller = new CourseManager($db);

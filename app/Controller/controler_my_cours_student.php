@@ -1,15 +1,10 @@
 <?php
-use Connection\database\Database;
+use Config\Database;
 use Users\Student;
-require_once('../Model/Database.php');
-require_once('../Model/User.php');
+// require_once('../config/Database.php');
+// require_once('../Model/User.php');
+require_once('/laragon/www/youdemy_mvc/vendor/autoload.php');
 session_start();
-
-// Uncomment this block to check if the user is logged in as a student
-// if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'student') {
-//     header('Location: login.php');
-//     exit();
-// }
 
 
 
