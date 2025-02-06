@@ -1,12 +1,6 @@
 <?php
-use Statistic\StatisticsManager;
-use Connection\database\Database;
-require_once('../Model/Database.php');
-require_once('../Model/Statistics.php');
 session_start();
-$database=new Database();
-$db=$database->getConnection();
-$stats = new StatisticsManager($db);
+require_once('../Controller/Statistic_teacher.php');
 ?>
 
 <style>

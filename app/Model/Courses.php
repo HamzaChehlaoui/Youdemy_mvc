@@ -1,6 +1,6 @@
 <?php
 namespace coursteacher;
-class Course {
+class Courses {
     private $conn;
     private $table = "courses";
 
