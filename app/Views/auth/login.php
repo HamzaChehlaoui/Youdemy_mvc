@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">Login</div>
-            <div class="card-body">
+               <div class="card-body">
                 <form method="POST" action="/login">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
