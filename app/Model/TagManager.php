@@ -1,5 +1,5 @@
 <?php 
-        namespace Tagmanager;
+        namespace App\Models;
         use PDO;
 
 class TagManager {
@@ -13,7 +13,7 @@ class TagManager {
         $query = "SELECT * FROM tags ORDER BY name";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function addTag($name) {

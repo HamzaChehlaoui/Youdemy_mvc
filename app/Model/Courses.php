@@ -1,5 +1,5 @@
 <?php
-namespace coursteacher;
+namespace App\Models;
 class Courses {
     private $conn;
     private $table = "courses";

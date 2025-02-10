@@ -1,5 +1,5 @@
 <?php 
-namespace Coursemanager;
+namespace App\Models;
 use PDO;
 
 abstract class Course {
@@ -68,7 +68,7 @@ class CourseManager {
         
         $stmt = $this->conn->prepare($query);
         $stmt->execute($params);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function getCourseTags($courseId) {
@@ -77,7 +77,7 @@ class CourseManager {
                  WHERE ct.course_id = :course_id";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([':course_id' => $courseId]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function deleteCourse($courseId) {
@@ -159,7 +159,7 @@ class CourseManager {
                     $tagQuery = "SELECT id_tags FROM tags WHERE name = :name";
                     $stmt = $this->conn->prepare($tagQuery);
                     $stmt->execute([':name' => $tag]);
-                    $existingTag = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $existingTag = $stmt->fetch(PDO::FETCH_OBJ);
                     
                     // If tag doesn't exist, create it
                     if (!$existingTag) {
@@ -209,7 +209,7 @@ class CourseManager {
         $stmt->bindParam(1, $id);
         $stmt->execute();
     
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
     
     public function getCoursesWithPagination($categoryId = null, $searchQuery = '', $page = 1, $itemsPerPage = 3) {
@@ -252,7 +252,7 @@ class CourseManager {
         $stmt->bindParam(':itemsPerPage', $itemsPerPage, PDO::PARAM_INT);
 
         $stmt->execute();
-        $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $courses = $stmt->fetchAll(PDO::FETCH_OBJ);
 
                 
                 // Get total count for pagination

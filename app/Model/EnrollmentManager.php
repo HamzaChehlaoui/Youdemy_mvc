@@ -1,5 +1,5 @@
 <?php
-namespace EnrollmentManager;
+namespace App\Models;
 use Config\Database;
 use PDOException;
 use PDO;
@@ -68,7 +68,7 @@ class EnrollmentManager
 
                 $contentStmt->execute([':course_id' => $this->courseId]);
 
-                $content = $contentStmt->fetch(PDO::FETCH_ASSOC);
+                $content = $contentStmt->fetch(PDO::FETCH_OBJ);
 
                 if ($content) {
                     $_SESSION['success'] = "Inscription au cours réussie!";

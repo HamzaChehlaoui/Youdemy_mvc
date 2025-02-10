@@ -1,5 +1,5 @@
 <?php
-namespace Categorymanager;
+namespace App\Models;
 use PDO;
 
 class Category {
@@ -28,7 +28,7 @@ class CategoryManager {
         $stmt->execute();
 
         $categories = [];
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
             $categories[] = new Category($row['id_categories'], $row['name'], $row['description']);
         }
 
@@ -69,7 +69,7 @@ class CategoryManager {
         $stmt->execute([':name' => '%' . $name . '%']);
 
         $categories = [];
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
             $categories[] = new Category($row['id_categories'], $row['name'], $row['description']);
         }
 

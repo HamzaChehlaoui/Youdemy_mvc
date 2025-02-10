@@ -1,11 +1,26 @@
 RewriteEngine On
 RewriteBase /
 
-# Route all requests to index.php
-RewriteRule ^$ index.php [L]
-RewriteRule ^index$ index.php [L]
-RewriteRule ^courses$ index.php [L]
-RewriteRule ^admin$ index.php [L]
+# Remove trailing slashes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-# Optionally, remove the .php extension from URLs
-RewriteRule ^(.*)$ /$1.php [L]
+# Redirect all requests to index.php unless file or directory exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Security headers
+Header set X-Content-Type-Options "nosniff"
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+Header set Content-Security-Policy "default-src 'self'"
+
+# Prevent access to sensitive files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

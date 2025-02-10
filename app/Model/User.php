@@ -1,5 +1,5 @@
 <?php  
-    namespace Users;
+    namespace App\Models;
     use PDOException;
     use PDO;
     class User {
@@ -94,7 +94,7 @@
                 $stmt->bindParam(":email", $this->email);
                 $stmt->execute();
 
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $row = $stmt->fetch(PDO::FETCH_OBJ);
 
                 if ($row && password_verify($this->password, $row['password'])) {
                     if ($row['status'] !== 'active') {
@@ -121,7 +121,7 @@
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":email", $this->email);
             $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+            return $stmt->fetch(PDO::FETCH_OBJ) ? true : false;
         }
 
         private function usernameExists() {
@@ -129,7 +129,7 @@
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":username", $this->username);
             $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+            return $stmt->fetch(PDO::FETCH_OBJ) ? true : false;
         }
 
 
@@ -212,7 +212,7 @@
             }
             
             $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
     
         // Get courses based on their status

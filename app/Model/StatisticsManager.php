@@ -1,5 +1,5 @@
 <?php 
-namespace Statistic;
+namespace App\Models;
 use PDO;
 class StatisticsManager {
     private $conn;
@@ -17,7 +17,7 @@ class StatisticsManager {
         
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function getTopTeachers($limit = 3) {
@@ -35,7 +35,7 @@ class StatisticsManager {
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function getMostPopularCourse() {
@@ -52,13 +52,13 @@ class StatisticsManager {
         
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
     public function getTotalStudents($id) {
         $query = "select count(DISTINCT student_id) as total from enrollments e,courses c where e.course_id=c.id_courses and c.teacher_id=:id;";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(["id"=>$id]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
         return $result['total'];
     }
 
@@ -66,7 +66,7 @@ class StatisticsManager {
         $query = "SELECT COUNT(*) as total FROM courses WHERE status = 'published' AND teacher_id=:id";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(["id"=>$id]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
         return $result['total'];
     }
 }?>

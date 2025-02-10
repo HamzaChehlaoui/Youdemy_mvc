@@ -1,36 +1,22 @@
 <?php
 
-use App\Controller\Show_cours;
-use App\Controller\AdminController;
+use App\Core\Router;
 
-function defineRoutes($request)
-{
-    $routes = [
-        '/' => 'Show_cours@index',
-        '/index' => 'Show_cours@index',
-        '/courses' => 'Show_cours@showCourses',
-        '/admin' => 'AdminController@dashboard',
-    ];
+// Initialize Router
+$router = Router::getInstance();
 
-    if (array_key_exists($request, $routes)) {
-        // Split the Controller and Method using @
-        list($controllerName, $methodName) = explode('@', $routes[$request]);
+// Public routes
+$router->get('/', 'CourseController@index');
+$router->get('/courses', 'CourseController@index');
+$router->get('/course/{id}', 'CourseController@show');
+$router->get('/login', 'AuthController@loginForm');
+$router->post('/login', 'AuthController@login');
+$router->get('/register', 'AuthController@registerForm');
+$router->post('/register', 'AuthController@register');
+$router->get('/logout', 'AuthController@logout');
 
-        // Include the Controller file
-        require_once "app/Controller/{$controllerName}.php";
-
-        // Create an instance of the Controller
-        $controller = new $controllerName();
-
-        // Check if the method exists
-        if (method_exists($controller, $methodName)) {
-            // Call the method of the Controller
-            $controller->$methodName();
-        } else {
-            echo "Method {$methodName} not found in controller {$controllerName}.";
-        }
-    } else {
-        // Display 404 if the route does not exist
-        echo "404 Page not found!";
-    }
-}
+// Protected routes (requires authentication)
+$router->group(['middleware' => 'auth'], function($router) {
+    $router->get('/course/add', 'AddCourseController@index');
+    $router->post('/course/store', 'AddCourseController@store');
+});
